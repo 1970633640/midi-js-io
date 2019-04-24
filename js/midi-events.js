@@ -15,6 +15,7 @@ function midi_start() {
             }
             var dx=document.getElementById(  e.note.name.replace('#','x') + e.note.octave).offsetLeft;
             int(dx+30,500);
+            create_square();
             var colors = anime({
                 targets: '#' + e.note.name.replace('#','x') + e.note.octave,
                 backgroundColor: [
