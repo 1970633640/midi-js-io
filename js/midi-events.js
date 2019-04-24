@@ -9,7 +9,7 @@ function midi_start() {
 
     input.addListener('noteon', "all",
         function (e) {
-            console.log("Received 'noteon' message (" + e.note.name + e.note.octave+"--"+e.channel + ").");
+            console.log("Received 'noteon' message (" + e.note.name + e.note.octave+"--channel="+e.channel +" --velocity="+e.velocity+ ").");
             if (midi_copy === "true") {
                 output.playNote(e.note.name + e.note.octave, 1, {velocity: e.velocity});
             }
@@ -27,7 +27,7 @@ function midi_start() {
 
     input.addListener('noteoff', "all",
         function (e) {
-            console.log("Received 'noteoff' message (" + e.note.name + e.note.octave + ").");
+            console.log("Received 'noteoff' message (" + e.note.name + e.note.octave +"--channel="+e.channel +" --velocity="+e.velocity+ ").");
             if (midi_copy === "true") {
                 output.stopNote(e.note.name + e.note.octave, 1,{velocity: e.velocity});
             }
