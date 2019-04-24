@@ -21,7 +21,7 @@ WebMidi.enable(function (err) {
         });
         var arr1 = new Array(128);
         for(var i=0;i<arr1.length;i++){
-            arr1[i] = i+1;
+            arr1[i] = i;
         }
         var example3 = new Vue({
             el: '#midi-instrument',

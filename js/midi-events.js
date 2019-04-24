@@ -9,9 +9,9 @@ function midi_start() {
 
     input.addListener('noteon', "all",
         function (e) {
-            console.log("Received 'noteon' message (" + e.note.name + e.note.octave + ").");
+            console.log("Received 'noteon' message (" + e.note.name + e.note.octave+"--"+e.channel + ").");
             if (midi_copy === "true") {
-                output.playNote(e.note.name + e.note.octave, "all", {velocity: e.velocity});
+                output.playNote(e.note.name + e.note.octave, 1, {velocity: e.velocity});
             }
             var colors = anime({
                 targets: '#' + e.note.name.replace('#','x') + e.note.octave,
@@ -29,7 +29,7 @@ function midi_start() {
         function (e) {
             console.log("Received 'noteoff' message (" + e.note.name + e.note.octave + ").");
             if (midi_copy === "true") {
-                output.stopNote(e.note.name + e.note.octave, "all",{velocity: e.velocity});
+                output.stopNote(e.note.name + e.note.octave, 1,{velocity: e.velocity});
             }
             var c;
             if (e.note.name.length > 1)
@@ -62,4 +62,11 @@ function midi_start() {
         }
     );
 
+}
+
+function change_instrument(){
+    var name = document.getElementById("midi-instrument").value;
+    var midi_out = localStorage.getItem("midi_out");
+    var output = WebMidi.getOutputById(midi_out);
+    output.sendProgramChange(name, "all");
 }

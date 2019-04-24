@@ -7,6 +7,7 @@
     <select  id="midi-instrument">
         <option :value="item" v-for="item in items">{{item}}</option>
     </select>
+    <button class="mui-btn mui-btn--primary" onclick="change_instrument();">应用</button>
     <br><br><br>屏幕按键力度
     <h2 style="position:absolute;bottom:0;width:90%;" onclick="panel_on('#midi-set');"><br>MIDI 乐器设置</h2>
 </div>
