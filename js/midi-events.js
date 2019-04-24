@@ -13,6 +13,8 @@ function midi_start() {
             if (midi_copy === "true") {
                 output.playNote(e.note.name + e.note.octave, 1, {velocity: e.velocity});
             }
+            var dx=document.getElementById(  e.note.name.replace('#','x') + e.note.octave).offsetLeft;
+            int(dx+30,500);
             var colors = anime({
                 targets: '#' + e.note.name.replace('#','x') + e.note.octave,
                 backgroundColor: [
