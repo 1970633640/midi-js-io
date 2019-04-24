@@ -1,0 +1,12 @@
+<div id="midi-set" class="panel" style="width:500px;height:300px;margin-left: 600px;">
+    <button class="mui-btn mui-btn--fab mui-btn--primary" style="font-size:20px; float:right;"
+            onclick="panel_close('#midi-set')">×
+    </button>
+
+    <br>输出乐器选择
+    <select  id="midi-instrument">
+        <option :value="item" v-for="item in items">{{item}}</option>
+    </select>
+    <br><br><br>屏幕按键力度
+    <h2 style="position:absolute;bottom:0;width:90%;" onclick="panel_on('#midi-set');"><br>MIDI 乐器设置</h2>
+</div>

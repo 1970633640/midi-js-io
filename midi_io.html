@@ -1,0 +1,25 @@
+<div id="midi-io" class="panel" style="width:500px;height:300px;">
+    <button class="mui-btn mui-btn--fab mui-btn--primary" style="font-size:20px; float:right;"
+            onclick="panel_close('#midi-io')">×
+    </button>
+    <br>
+    <div id="midi-test">测试web midi支持</div>
+    <br><br>
+    选择输入设备
+
+    <select  id="midi-in">
+        <option :value="item.id" v-for="item in items">NAME:{{item.name}}&nbsp;&nbsp;&nbsp;&nbsp;ID:{{item.id}}</option>
+    </select>
+    <br><br><br>
+    选择输出设备
+
+    <select  id="midi-out">
+        <option :value="item.id" v-for="item in items">NAME:{{item.name}}&nbsp;&nbsp;&nbsp;&nbsp;ID:{{item.id}}</option>
+    </select>
+    <br><br><br>
+    <label><input type="checkbox" id="midi-copy">把所有输入传输到输出</label>
+
+    <button class="mui-btn mui-btn--primary" style="float:right;" onclick="save_io();">开始</button>
+
+    <h2 style="position:absolute;bottom:0;width:90%;" onclick="panel_on('#midi-io')">MIDI I/O</h2>
+</div>

@@ -1,0 +1,22 @@
+.white-key {
+    width: 50px;
+    height: 150px;
+    z-index:9;
+    background-color: #FFFFFF;
+    border: 1px solid #00e4fa;
+    border-radius:5px;
+    float:left;
+}
+
+.black-key {
+    width: 30px;
+    height: 90px;
+    z-index: 10;
+    background-color: #5e6c80;
+    margin-left:35px;
+    margin-top: -2px;
+    border: 1px solid #00e4fa;
+    border-radius:5px;
+    position: relative;
+    float:left;
+}
