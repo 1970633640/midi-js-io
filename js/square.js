@@ -45,7 +45,7 @@ function draw_bars() {
     var j;
     for (j = squares.length-1; j >= 0; j--) {
         if (squares[j].y1 === 0 && squares[j].y2 === 0)
-            squares.slice(j, 1);
+            squares.splice(j, 1);
     }
     window.requestAnimationFrame(draw_bars);
 }

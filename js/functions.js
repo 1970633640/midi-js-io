@@ -1,3 +1,5 @@
+
+
 function save_io() {
     var name = document.getElementById("midi-in").value;
     localStorage.setItem("midi_in", name);
@@ -8,6 +10,10 @@ function save_io() {
     midi_start();
 }
 
+function save_velocity() {
+    var name = document.getElementById("midi-force-velocity").value;
+    localStorage.setItem("force_velocity", name);
+}
 
 function includeHTML() {
     var z, i, elmnt, file, xhttp;

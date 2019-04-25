@@ -11,7 +11,11 @@ function midi_start() {
         function (e) {
             console.log("Received 'noteon' message (" + e.note.name + e.note.octave + "--channel=" + e.channel + " --velocity=" + e.velocity + ").");
             if (midi_copy === "true") {
-                output.playNote(e.note.name + e.note.octave, 1, {velocity: e.velocity});
+                var force_velocity = localStorage.getItem("force_velocity");
+                if (force_velocity === "false")
+                    output.playNote(e.note.name + e.note.octave, 1, {velocity: e.velocity});
+                else
+                    output.playNote(e.note.name + e.note.octave, 1, {velocity: 1});
             }
             var k = document.getElementById(e.note.name.replace('#', 'x') + e.note.octave);
             var dx = k.offsetLeft + k.offsetWidth / 2;
@@ -34,7 +38,11 @@ function midi_start() {
         function (e) {
             console.log("Received 'noteoff' message (" + e.note.name + e.note.octave + "--channel=" + e.channel + " --velocity=" + e.velocity + ").");
             if (midi_copy === "true") {
-                output.stopNote(e.note.name + e.note.octave, 1, {velocity: e.velocity});
+                var force_velocity = localStorage.getItem("force_velocity");
+                if (force_velocity === "false")
+                    output.stopNote(e.note.name + e.note.octave, 1, {velocity: e.velocity});
+                else
+                    output.stopNote(e.note.name + e.note.octave, 1, {velocity: 1});
             }
             release_line(e.note.name + e.note.octave)
             var c;
