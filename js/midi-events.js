@@ -9,15 +9,17 @@ function midi_start() {
 
     input.addListener('noteon', "all",
         function (e) {
-            console.log("Received 'noteon' message (" + e.note.name + e.note.octave+"--channel="+e.channel +" --velocity="+e.velocity+ ").");
+            console.log("Received 'noteon' message (" + e.note.name + e.note.octave + "--channel=" + e.channel + " --velocity=" + e.velocity + ").");
             if (midi_copy === "true") {
                 output.playNote(e.note.name + e.note.octave, 1, {velocity: e.velocity});
             }
-            var dx=document.getElementById(  e.note.name.replace('#','x') + e.note.octave).offsetLeft;
-            int(dx+30,500);
-            create_square();
+            var k = document.getElementById(e.note.name.replace('#', 'x') + e.note.octave);
+            var dx = k.offsetLeft + k.offsetWidth / 2;
+            int(dx, 500);
+            //create_square();
+            add_line(dx, e.note.name + e.note.octave);
             var colors = anime({
-                targets: '#' + e.note.name.replace('#','x') + e.note.octave,
+                targets: '#' + e.note.name.replace('#', 'x') + e.note.octave,
                 backgroundColor: [
                     {value: 'rgb(255, ' + (200 - e.velocity * 200).toString() + ', ' + (200 - e.velocity * 200).toString() + ')'},
                 ],
@@ -30,19 +32,20 @@ function midi_start() {
 
     input.addListener('noteoff', "all",
         function (e) {
-            console.log("Received 'noteoff' message (" + e.note.name + e.note.octave +"--channel="+e.channel +" --velocity="+e.velocity+ ").");
+            console.log("Received 'noteoff' message (" + e.note.name + e.note.octave + "--channel=" + e.channel + " --velocity=" + e.velocity + ").");
             if (midi_copy === "true") {
-                output.stopNote(e.note.name + e.note.octave, 1,{velocity: e.velocity});
+                output.stopNote(e.note.name + e.note.octave, 1, {velocity: e.velocity});
             }
+            release_line(e.note.name + e.note.octave)
             var c;
             if (e.note.name.length > 1)
                 c = "#5e6c80";
             else
                 c = "#FFFFFF";
             var colors = anime({
-                targets: '#' + e.note.name.replace('#','x') + e.note.octave,
+                targets: '#' + e.note.name.replace('#', 'x') + e.note.octave,
                 backgroundColor: [
-                    {value:c}
+                    {value: c}
                 ],
                 easing: 'linear',
                 direction: 'normal',
@@ -67,7 +70,7 @@ function midi_start() {
 
 }
 
-function change_instrument(){
+function change_instrument() {
     var name = document.getElementById("midi-instrument").value;
     var midi_out = localStorage.getItem("midi_out");
     var output = WebMidi.getOutputById(midi_out);

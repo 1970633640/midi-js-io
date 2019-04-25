@@ -20,3 +20,8 @@
     position: relative;
     float:left;
 }
+
+#keys{
+    position:fixed;
+    margin-top: 550px;
+}

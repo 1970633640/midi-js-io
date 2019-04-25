@@ -91,7 +91,6 @@ class BigCircle {
     //检查是否运行完毕，以大圆为标准清空屏幕
     complete() {
         return this.bR >= this.overR && this.op <= 0;
-        return 0;
     }
 }
 
@@ -145,9 +144,5 @@ let creat = function () {
     }
 }
 
-c.onclick = function (e) {
-    e = e || window.event;
-    console.log(e.clientX + "" + e.clientY);
-    int(e.clientX, e.clientY)
-}
+
 
