@@ -12,7 +12,7 @@ class square {
         this.y1 = y;
         this.x2 = x;
         this.y2 = y;
-        console.log("create  " + this.x1 + " " + this.y1 + ", " + this.x2 + " " + this.y2);
+        //console.log("create  " + this.x1 + " " + this.y1 + ", " + this.x2 + " " + this.y2);
         this.noteid = noteid;
         this.velocity=velocity;
         this.type = type; //1自下而上 2自下而上且释放  3、4反向

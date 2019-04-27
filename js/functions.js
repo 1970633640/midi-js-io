@@ -18,6 +18,36 @@ function save_velocity() {
     force_velocity= localStorage.getItem("force_velocity");
 }
 
+function save_effect() {
+    var name = document.getElementById("midi-keydown-sparks").checked;
+    localStorage.setItem("midi_keydown_sparks", name);
+    midi_keydown_sparks= localStorage.getItem("midi_keydown_sparks");
+
+    name = document.getElementById("midi-keydown-keydown").checked;
+    localStorage.setItem("midi_keydown_keydown", name);
+    midi_keydown_keydown= localStorage.getItem("midi_keydown_keydown");
+
+    name = document.getElementById("midi-keydown-output").checked;
+    localStorage.setItem("midi_keydown_output", name);
+    midi_keydown_output= localStorage.getItem("midi_keydown_output");
+
+    name = document.getElementById("midi-keydown-bars").checked;
+    localStorage.setItem("midi_keydown_bars", name);
+    midi_keydown_bars= localStorage.getItem("midi_keydown_bars");
+//---------------------------
+    name = document.getElementById("midi-force-sparks").checked;
+    localStorage.setItem("midi_force_sparks", name);
+    midi_force_sparks= localStorage.getItem("midi_force_sparks");
+
+    name = document.getElementById("midi-force-keydown").checked;
+    localStorage.setItem("midi_force_keydown", name);
+    midi_force_keydown= localStorage.getItem("midi_force_keydown");
+
+    name = document.getElementById("midi-force-output").checked;
+    localStorage.setItem("midi_force_output", name);
+    midi_force_output= localStorage.getItem("midi_force_output");
+}
+
 function includeHTML() {
     var z, i, elmnt, file, xhttp;
     /* Loop through a collection of all HTML elements: */
