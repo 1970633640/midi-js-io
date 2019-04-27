@@ -18,8 +18,8 @@
     </select>
     <br><br><br>
     <label><input type="checkbox" id="midi-copy">把所有输入传输到输出</label>
-
-    <button class="mui-btn mui-btn--primary" style="float:right;" onclick="save_io();">开始</button>
+    <button class="mui-btn mui-btn--primary" style="float:right;margin-left:10px;" onclick="save_io();">应用</button>
+    <button id="midi_start" class="mui-btn mui-btn--danger" style="float:right;" onclick="midi_start();">开始监听</button>
 
     <h2 style="position:absolute;bottom:0;width:90%;" onclick="panel_on('#midi-io')">MIDI I/O</h2>
 </div>

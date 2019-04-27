@@ -1,27 +1,33 @@
-function midi_start() {
+var force_velocity = localStorage.getItem("force_velocity");
+document.getElementById("midi-force-velocity").checked = eval(force_velocity);
+var midi_copy = localStorage.getItem("midi_copy");
+var midi_in = localStorage.getItem("midi_in");
+var midi_out = localStorage.getItem("midi_out");
+var input = null;
+var output = null;
 
+function midi_start() {
+    save_io();
+    var my = document.getElementById("midi_start");
+    if (my != null)
+        my.parentNode.removeChild(my);
     document.getElementById("midi-test").innerText = "WebMidi 可用  开始监听";
-    var midi_copy = localStorage.getItem("midi_copy");
-    var midi_in = localStorage.getItem("midi_in");
-    var midi_out = localStorage.getItem("midi_out");
-    var input = WebMidi.getInputById(midi_in);
-    var output = WebMidi.getOutputById(midi_out);
 
     input.addListener('noteon', "all",
         function (e) {
-            console.log("Received 'noteon' message (" + e.note.name + e.note.octave + "--channel=" + e.channel + " --velocity=" + e.velocity + ").");
+            //console.log("Received 'noteon' message (" + e.note.name + e.note.octave + "--channel=" + e.channel + " --velocity=" + e.velocity + ").");
             if (midi_copy === "true") {
-                var force_velocity = localStorage.getItem("force_velocity");
                 if (force_velocity === "false")
                     output.playNote(e.note.name + e.note.octave, 1, {velocity: e.velocity});
                 else
                     output.playNote(e.note.name + e.note.octave, 1, {velocity: 1});
             }
+            if (recording)
+                record_noteon(e.note.name, e.note.octave, e.velocity);
             var k = document.getElementById(e.note.name.replace('#', 'x') + e.note.octave);
             var dx = k.offsetLeft + k.offsetWidth / 2;
-            int(dx, 500);
-            //create_square();
-            add_line(dx, e.note.name + e.note.octave);
+            int(dx, 600);
+            add_line(dx, e.note.name + e.note.octave, e.velocity);
             var colors = anime({
                 targets: '#' + e.note.name.replace('#', 'x') + e.note.octave,
                 backgroundColor: [
@@ -36,7 +42,7 @@ function midi_start() {
 
     input.addListener('noteoff', "all",
         function (e) {
-            console.log("Received 'noteoff' message (" + e.note.name + e.note.octave + "--channel=" + e.channel + " --velocity=" + e.velocity + ").");
+            //console.log("Received 'noteoff' message (" + e.note.name + e.note.octave + "--channel=" + e.channel + " --velocity=" + e.velocity + ").");
             if (midi_copy === "true") {
                 var force_velocity = localStorage.getItem("force_velocity");
                 if (force_velocity === "false")
@@ -44,6 +50,8 @@ function midi_start() {
                 else
                     output.stopNote(e.note.name + e.note.octave, 1, {velocity: 1});
             }
+            if (recording)
+                record_noteoff(e.note.name, e.note.octave, e.velocity)
             release_line(e.note.name + e.note.octave)
             var c;
             if (e.note.name.length > 1)

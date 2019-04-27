@@ -1,0 +1,16 @@
+<div id="midi-record" class="panel" style="width:700px;height:300px;margin-left: 1100px;">
+    <button class="mui-btn mui-btn--fab mui-btn--primary" style="font-size:20px; float:right;"
+            onclick="panel_close('#midi-record')">×
+    </button>
+    <div>数据量：
+        <div id="recorded_length" style="display: inline">0</div> &nbsp;个按键数据
+    </div>
+    <button id="record_button" class="mui-btn mui-btn--danger" onclick="start_record()" style="font-size:20px;">●
+    </button>
+    <button class="mui-btn mui-btn--primary" onclick="" style="font-size:20px;">▶</button>
+    <br>
+    <label><input type="checkbox" id="midi-force-sparks">自动按键火花</label>
+    <br><label><input type="checkbox" id="midi-force-keydown">自动按键红色提示</label>
+    <br><label><input type="checkbox" id="midi-force-output">自动按键声音</label>
+    <h2 style="position:absolute;bottom:0;width:90%;" onclick="panel_on('#midi-record')">录制/回放</h2>
+</div>

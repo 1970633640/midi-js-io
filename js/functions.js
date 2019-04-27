@@ -1,18 +1,21 @@
-
-
 function save_io() {
     var name = document.getElementById("midi-in").value;
     localStorage.setItem("midi_in", name);
     name = document.getElementById("midi-out").value;
     localStorage.setItem("midi_out", name);
-    name=document.getElementById("midi-copy").checked;
+    name = document.getElementById("midi-copy").checked;
     localStorage.setItem("midi_copy", name);
-    midi_start();
+    input = WebMidi.getInputById(midi_in);
+    output = WebMidi.getOutputById(midi_out);
+    midi_copy = localStorage.getItem("midi_copy");
+    midi_in = localStorage.getItem("midi_in");
+    midi_out = localStorage.getItem("midi_out");
 }
 
 function save_velocity() {
-    var name = document.getElementById("midi-force-velocity").value;
+    var name = document.getElementById("midi-force-velocity").checked;
     localStorage.setItem("force_velocity", name);
+    force_velocity= localStorage.getItem("force_velocity");
 }
 
 function includeHTML() {
