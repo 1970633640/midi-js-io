@@ -10,6 +10,7 @@ function save_io() {
     midi_copy = localStorage.getItem("midi_copy");
     midi_in = localStorage.getItem("midi_in");
     midi_out = localStorage.getItem("midi_out");
+
 }
 
 function save_velocity() {
@@ -46,6 +47,10 @@ function save_effect() {
     name = document.getElementById("midi-force-output").checked;
     localStorage.setItem("midi_force_output", name);
     midi_force_output= localStorage.getItem("midi_force_output");
+
+    name = document.getElementById("midi-playback-speed").value;
+    localStorage.setItem("play_speed", name);
+    play_speed = eval(localStorage.getItem("play_speed"));
 }
 
 function includeHTML() {

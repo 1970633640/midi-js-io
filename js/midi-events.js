@@ -19,6 +19,8 @@ var midi_force_keydown = localStorage.getItem("midi_force_keydown");
 document.getElementById("midi-force-keydown").checked = eval(midi_force_keydown);
 var midi_force_output = localStorage.getItem("midi_force_output");
 document.getElementById("midi-force-output").checked = eval(midi_force_output);
+play_speed = localStorage.getItem("play_speed");
+document.getElementById("midi-playback-speed").value = eval(play_speed);
 
 
 var input = null;

@@ -48,6 +48,8 @@
     <button id="record_button" class="mui-btn mui-btn--danger" onclick="start_record()" style="font-size:20px;">●
     </button>
     <button class="mui-btn mui-btn--primary" onclick="start_playback();" style="font-size:20px;">▶</button>
+    &nbsp;播放速度&nbsp;<input style="width:60px;" type="text" id="midi-playback-speed" />x
+    <br>
     <button class="mui-btn mui-btn--primary" onclick="copy_out();" >导出到剪贴板</button>
     <button class="mui-btn mui-btn--primary" onclick="copy_in();" >从剪贴板导入</button>
     <br>
@@ -57,9 +59,10 @@
     <br><br>
     <label><input type="checkbox" id="midi-keydown-sparks">按键火花</label>
     <br><label><input type="checkbox" id="midi-keydown-keydown">按键红色提示</label>
+    <button class="mui-btn mui-btn--primary" style="float:right;margin-left:10px;" onclick="save_effect();">应用</button>
     <br><label><input type="checkbox" id="midi-keydown-output">按键声音</label>
     <br><label><input type="checkbox" id="midi-keydown-bars">按键彩条</label>
-    <button class="mui-btn mui-btn--primary" style="float:right;margin-left:10px;" onclick="save_effect();">应用</button>
+
     <h2 style="position:absolute;bottom:0;width:90%;" onclick="panel_on('#midi-record')">录制/回放</h2>
 </div>
 <div w3-include-html="midi_record.html"></div>

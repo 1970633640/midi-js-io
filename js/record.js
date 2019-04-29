@@ -1,7 +1,7 @@
 recorded_key_data = [];
 start_time = 0;
 recording = false;
-
+play_speed =  localStorage.getItem("play_speed");
 class key_data {
     constructor(start_time, type, note_name, note_octave, velocity) {
         this.start_time = start_time;
@@ -26,7 +26,7 @@ function start_record() {
 
 function start_playback() {
     var j = null;
-    var play_speed = 2.0;
+
     for (i in recorded_key_data) {
         (function (j) {
             if (recorded_key_data[j].type === 1) {
@@ -113,6 +113,7 @@ function copy_in() {
             const text = await navigator.clipboard.readText();
             console.log("read: " + text);
             recorded_key_data = JSON.parse(text);
+            document.getElementById("recorded_length").innerText = recorded_key_data.length.toString();
         } catch (err) {
             console.error('Failed to read clipboard contents: ', err);
         }
