@@ -1,5 +1,7 @@
 # midi-js-io
 
-## COMING SOON
+midi input and output
 
-[抢先体验](https://1970633640.github.io/midi-js-io/)
+灵感来自节奏大师
+
+[中文版 chinese web version](https://1970633640.github.io/midi-js-io/)
